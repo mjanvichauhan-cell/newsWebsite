@@ -24,7 +24,7 @@ A responsive News Website built using **HTML, CSS, and JavaScript** that fetches
 
 ## 📷 Screenshots
 
-![newswebsite]()
+![newswebsite](newswebsiteimg.png)
 
 ## 🎯 Future Improvements
 
