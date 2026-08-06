@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsline — Stories that matter, today</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../newswebsite/news.css">
+</head>
+<body>
+
+  <div class="top-strip">
+    <div class="container flex">
+      <div class="date-line"><i class="fa-regular fa-calendar"></i><span id="today-date"></span></div>
+      <div class="social-links flex">
+        <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <nav>
+    <div class="main-nav container flex">
+      <a href="#" onclick="reload()" class="company-logo flex">
+        <span class="logo-mark"><i class="fa-solid fa-newspaper"></i></span>
+        <span class="brand-name">News<span>line</span></span>
+      </a>
+
+      <div class="nav-links">
+        <ul class="flex">
+          <li class="hover-link nav-item active" id="Home" onclick="onNavItemClick('Home')">Home</li>
+          <li class="hover-link nav-item" id="business" onclick="onNavItemClick('business')">Business</li>
+          <li class="hover-link nav-item" id="India" onclick="onNavItemClick('India')">India</li>
+          <li class="hover-link nav-item" id="World" onclick="onNavItemClick('World')">World</li>
+          <li class="hover-link nav-item" id="Politics" onclick="onNavItemClick('Politics')">Politics</li>
+          <li class="hover-link nav-item" id="Sports" onclick="onNavItemClick('Sports')">Sports</li>
+          <li class="hover-link nav-item" id="Entertainment" onclick="onNavItemClick('Entertainment')">Entertainment</li>
+          <li class="hover-link nav-item" id="Technology" onclick="onNavItemClick('Technology')">Technology</li>
+        </ul>
+      </div>
+
+      <div class="search-bar flex">
+        <input id="search-text" type="text" class="news-input" placeholder="Search topics…">
+        <button id="search-button" class="search-button" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <button class="menu-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="section-heading flex">
+      <h2><i class="fa-solid fa-bolt"></i> <span id="section-title">Top Stories</span></h2>
+      <div class="live-tag"><span class="dot"></span>Live</div>
+    </div>
+
+    <div class="cards-container" id="cards-container">
+      <div class="status-panel" id="status-panel">
+        <i class="fa-solid fa-circle-notch spin"></i>
+        Fetching the latest headlines…
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-name flex" style="gap:8px;"><i class="fa-solid fa-newspaper" style="color:var(--accent)"></i>News<span>line</span></div>
+          <p>Independent, fast, and accurate coverage of the stories shaping your day — business, politics, sport, and everything between.</p>
+          <div class="footer-social flex">
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="#" onclick="onNavItemClick('business')">Business</a></li>
+            <li><a href="#" onclick="onNavItemClick('World')">World</a></li>
+            <li><a href="#" onclick="onNavItemClick('Politics')">Politics</a></li>
+            <li><a href="#" onclick="onNavItemClick('Sports')">Sports</a></li>
+            <li><a href="#" onclick="onNavItemClick('Technology')">Technology</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-newsletter">
+          <h4>Stay informed</h4>
+          <p>Get the day's top stories in your inbox, every morning.</p>
+          <form class="newsletter-form flex" onsubmit="return handleNewsletterSubmit(event)">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom flex">
+        <span>&copy; <span id="footer-year"></span> Newsline. All rights reserved.</span>
+        <div class="footer-legal flex">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <template id="template-news-card">
+    <div class="card">
+      <div class="card-header">
+        <img src="https://via.placeholder.com/400x200" alt="news-image" id="news-img">
+        <span class="card-badge" id="news-badge">News</span>
+      </div>
+      <div class="card-content">
+        <h6 class="news-source" id="news-source"><i class="fa-regular fa-clock"></i>End Gadget · 26/08/2023</h6>
+        <h3 id="news-title" class="news-title">This is the Title</h3>
+        <p class="news-desc" id="news-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae saepe quis voluptatum quisquam vitae doloremque facilis molestias quae ratione cumque!</p>
+        <div class="card-footer">Read story <i class="fa-solid fa-arrow-right"></i></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="../newswebsite/news.js"></script>
+</body>
+</html>
