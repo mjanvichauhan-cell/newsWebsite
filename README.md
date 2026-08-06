@@ -41,4 +41,5 @@ A responsive News Website built using **HTML, CSS, and JavaScript** that fetches
 
 ---
 
+
 ⭐ If you like this project, consider giving it a star!
